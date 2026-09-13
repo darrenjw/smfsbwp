@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="lambda" name="lambda phage (Robb and Shahrezaei, 2014)" substanceUnits="item" timeUnits="minute" volumeUnits="litre" extentUnits="item">
+    <listOfCompartments>
+      <compartment id="Cell" size="1e-15"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="CI" compartment="Cell" initialAmount="0" hasOnlySubstanceUnits="true"/>
+      <species id="CI2" compartment="Cell" initialAmount="0" hasOnlySubstanceUnits="true"/>
+      <species id="Cro" compartment="Cell" initialAmount="0" hasOnlySubstanceUnits="true"/>
+      <species id="Cro2" compartment="Cell" initialAmount="0" hasOnlySubstanceUnits="true"/>
+      <species id="CII" compartment="Cell" initialAmount="0" hasOnlySubstanceUnits="true"/>
+      <species id="CII2" compartment="Cell" initialAmount="0" hasOnlySubstanceUnits="true"/>
+      <species id="Prmr" compartment="Cell" initialAmount="1" hasOnlySubstanceUnits="true"/>
+      <species id="PrmrCI2" compartment="Cell" initialAmount="0" hasOnlySubstanceUnits="true"/>
+      <species id="PrmrCro2" compartment="Cell" initialAmount="0" hasOnlySubstanceUnits="true"/>
+      <species id="Pre" compartment="Cell" initialAmount="1" hasOnlySubstanceUnits="true"/>
+      <species id="PreCI2" compartment="Cell" initialAmount="0" hasOnlySubstanceUnits="true"/>
+      <species id="PreCII2" compartment="Cell" initialAmount="0" hasOnlySubstanceUnits="true"/>
+      <species id="mCI" compartment="Cell" initialAmount="0" hasOnlySubstanceUnits="true"/>
+      <species id="mCII" compartment="Cell" initialAmount="0" hasOnlySubstanceUnits="true"/>
+      <species id="mCro" compartment="Cell" initialAmount="0" hasOnlySubstanceUnits="true"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter id="nA" value="6.023e+23"/>
+      <parameter id="kdim" value="1000000"/>
+      <parameter id="kdis" value="0.1"/>
+      <parameter id="cideg" value="0.04"/>
+      <parameter id="crodeg" value="0.05"/>
+      <parameter id="ciideg" value="0.12"/>
+      <parameter id="kon" value="1000000"/>
+      <parameter id="koff" value="0.1"/>
+      <parameter id="beta" value="1.6"/>
+      <parameter id="delta" value="1.2"/>
+      <parameter id="alpha" value="0.8"/>
+      <parameter id="deg" value="0.1"/>
+      <parameter id="sigma" value="0.5"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction id="CIdimer" reversible="false">
+        <listOfReactants>
+          <speciesReference species="CI" stoichiometry="2"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="CI2" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> kdim </ci>
+                <ci> CI </ci>
+                <apply>
+                  <minus/>
+                  <ci> CI </ci>
+                  <cn type="integer"> 1 </cn>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> nA </ci>
+                <ci> Cell </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="CIdiss" reversible="false">
+        <listOfReactants>
+          <speciesReference species="CI2" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="CI" stoichiometry="2"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kdis </ci>
+              <ci> CI2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="CroDimer" reversible="false">
+        <listOfReactants>
+          <speciesReference species="Cro" stoichiometry="2"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Cro2" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> kdim </ci>
+                <ci> Cro </ci>
+                <apply>
+                  <minus/>
+                  <ci> Cro </ci>
+                  <cn type="integer"> 1 </cn>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> nA </ci>
+                <ci> Cell </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="CroDiss" reversible="false">
+        <listOfReactants>
+          <speciesReference species="Cro2" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Cro" stoichiometry="2"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kdis </ci>
+              <ci> Cro2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="CIIdimer" reversible="false">
+        <listOfReactants>
+          <speciesReference species="CII" stoichiometry="2"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="CII2" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> kdim </ci>
+                <ci> CII </ci>
+                <apply>
+                  <minus/>
+                  <ci> CII </ci>
+                  <cn type="integer"> 1 </cn>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> nA </ci>
+                <ci> Cell </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="CIIdiss" reversible="false">
+        <listOfReactants>
+          <speciesReference species="CII2" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="CII" stoichiometry="2"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kdis </ci>
+              <ci> CII2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="CIdeg" reversible="false">
+        <listOfReactants>
+          <speciesReference species="CI" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> cideg </ci>
+              <ci> CI </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="CroDeg" reversible="false">
+        <listOfReactants>
+          <speciesReference species="Cro" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> crodeg </ci>
+              <ci> Cro </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="CIIdeg" reversible="false">
+        <listOfReactants>
+          <speciesReference species="CII" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> ciideg </ci>
+              <ci> CII </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="CI2bind" reversible="false">
+        <listOfReactants>
+          <speciesReference species="Prmr" stoichiometry="1"/>
+          <speciesReference species="CI2" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="PrmrCI2" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> kon </ci>
+                <ci> Prmr </ci>
+                <ci> CI2 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> nA </ci>
+                <ci> Cell </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="CI2diss" reversible="false">
+        <listOfReactants>
+          <speciesReference species="PrmrCI2" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Prmr" stoichiometry="1"/>
+          <speciesReference species="CI2" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> koff </ci>
+              <ci> PrmrCI2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Cro2bind" reversible="false">
+        <listOfReactants>
+          <speciesReference species="Prmr" stoichiometry="1"/>
+          <speciesReference species="Cro2" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="PrmrCro2" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> kon </ci>
+                <ci> Prmr </ci>
+                <ci> Cro2 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> nA </ci>
+                <ci> Cell </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Cro2diss" reversible="false">
+        <listOfReactants>
+          <speciesReference species="PrmrCro2" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Prmr" stoichiometry="1"/>
+          <speciesReference species="Cro2" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> koff </ci>
+              <ci> PrmrCro2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="CII2bind" reversible="false">
+        <listOfReactants>
+          <speciesReference species="Pre" stoichiometry="1"/>
+          <speciesReference species="CII2" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="PreCII2" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> kon </ci>
+                <ci> Pre </ci>
+                <ci> CII2 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> nA </ci>
+                <ci> Cell </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="CII2diss" reversible="false">
+        <listOfReactants>
+          <speciesReference species="PreCII2" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Pre" stoichiometry="1"/>
+          <speciesReference species="CII2" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> koff </ci>
+              <ci> PreCII2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="CIrtc" reversible="false">
+        <listOfReactants>
+          <speciesReference species="PrmrCI2" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="PrmrCI2" stoichiometry="1"/>
+          <speciesReference species="mCI" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> beta </ci>
+              <ci> PrmrCI2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="CIIrtc" reversible="false">
+        <listOfReactants>
+          <speciesReference species="PreCII2" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="PreCII2" stoichiometry="1"/>
+          <speciesReference species="mCI" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> delta </ci>
+              <ci> PreCII2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Crotc" reversible="false">
+        <listOfReactants>
+          <speciesReference species="Prmr" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Prmr" stoichiometry="1"/>
+          <speciesReference species="mCro" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> alpha </ci>
+              <ci> Prmr </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="CIItc" reversible="false">
+        <listOfReactants>
+          <speciesReference species="Prmr" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Prmr" stoichiometry="1"/>
+          <speciesReference species="mCII" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> alpha </ci>
+              <ci> Prmr </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mCIdeg" reversible="false">
+        <listOfReactants>
+          <speciesReference species="mCI" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> deg </ci>
+              <ci> mCI </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mCrodeg" reversible="false">
+        <listOfReactants>
+          <speciesReference species="mCro" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> deg </ci>
+              <ci> mCro </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mCIIdeg" reversible="false">
+        <listOfReactants>
+          <speciesReference species="mCII" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> deg </ci>
+              <ci> mCII </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mCItl" reversible="false">
+        <listOfReactants>
+          <speciesReference species="mCI" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mCI" stoichiometry="1"/>
+          <speciesReference species="CI" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> sigma </ci>
+              <ci> mCI </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mCrotl" reversible="false">
+        <listOfReactants>
+          <speciesReference species="mCro" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mCro" stoichiometry="1"/>
+          <speciesReference species="Cro" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> sigma </ci>
+              <ci> mCro </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="mCIItl" reversible="false">
+        <listOfReactants>
+          <speciesReference species="mCII" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="mCII" stoichiometry="1"/>
+          <speciesReference species="CII" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> sigma </ci>
+              <ci> mCII </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>
